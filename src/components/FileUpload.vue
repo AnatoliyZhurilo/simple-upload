@@ -8,7 +8,7 @@ import { onMounted, ref } from "vue";
 let uploader_img = ref(null);
 const uploaderRef = ref(null);
 
-const g_bucket_name = "todoDefineName"; //todo
+const g_bucket_name = "dc-docs-testing"; //todo
 
 onMounted(() => {
   uploader_img.value = new qq.s3.FineUploaderBasic({
@@ -26,18 +26,18 @@ onMounted(() => {
       accessKey: "AKIAWKUKPQ5NYHHEI5PB",
     },
     signature: {
-      endpoint: "/S3/signature",
+      endpoint: "https://uploadtest.dcatalog.com/S3/signature",
     },
     chunking: {
       enabled: false,
     },
     uploadSuccess: {
-      endpoint: "/S3/success",
+      endpoint: "https://uploadtest.dcatalog.com/S3/success",
     },
     deleteFile: {
       enabled: true,
       forceConfirm: true,
-      endpoint: "/S3/delete",
+      endpoint: "https://uploadtest.dcatalog.com/S3/delete",
     },
     validation: {
       allowedExtensions: ["jpg", "jpeg", "png", "gif", "svg"],
@@ -49,6 +49,7 @@ onMounted(() => {
           console.log(responseJSON);
         }
       },
+      // eslint-disable-next-line no-unused-vars
       onUpload: function (id, name) {
         //
       },
